@@ -20,43 +20,10 @@
   <body>
 
       <!-- Barra de Navegação -->
-      <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="../index.html">Inicio</a>
-        </div>
+      <?php
+      require'navegacao.php';
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="../galeria.html">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
-            <li><a href="../Visitas.php">Visitas</a></li>
-            <li><a href="../login.html">Login</a></li>
-            <li><a href="../cadastro.html">Inscrição</a></li>
-            <li><a href="../contatos.html">Contate-Nos</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doar<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="../doacoes/doarbs.html">Doe Dinheiro</a></li>
-                <li><a href="../doacoes/doetempobs.html">Doe Tempo</a></li>
-                <li><a href="../doacoes/doaralgo.html">Doe Algo</a></li>
-              </ul>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../faq.html">FAQ</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+      ?>
     <center>
     <div class="jumbotron" style="margin: 30px; padding: 30px; width: 80%;" >
     <h1 align="center">Doe Tempo</h1><br>
