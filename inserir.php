@@ -4,7 +4,7 @@
     $email = $_POST['email'];
     $assunto = $_POST['assunto'];
     $mensagem = $_POST['mensagem'];
-    $conexao = mysqli_connect('10.31.30.92', 'root', '@luno1fpe','HEROIS_SOLIDARIOS');
+    require('conexao.php');
 
 
     if (!conexao){
@@ -18,7 +18,7 @@
 
     if ($resultado){
     	echo "<p>Cadastro feito com sucesso</p>";
-            echo '<a href="contatos.html">Voltar para contate nos</a>';
+            echo '<a href="contatos.php">Voltar para contate nos</a>';
     }else {
     	echo "<h1> DEU ERRO !! </h1>";
     }

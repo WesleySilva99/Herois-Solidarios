@@ -6,7 +6,6 @@
     die();
   }
  ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -14,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Doe Algo</title>
+    <title>Doe Dinheiro</title>
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -47,20 +46,19 @@
           <ul class="nav navbar-nav">
             <li><a href="../galeria.php">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
             <li><a href="../Visitas.php">Visitas</a></li>
-          <?php
+            <?php
             session_start();
             $usuario = $_SESSION['login'];
             if (!isset($_SESSION['login'])){
 
             ?>
-
             <li><a href="../login.php">Login</a></li>
             <li><a href="../cadastro.php">Inscrição</a></li>
             <?php
               }
             ?>
             <li><a href="../contatos.php">Contate-Nos</a></li>
-            <?php if ($_SESSION['login']){
+           <?php if ($_SESSION['login']){
 
             ?>
             <li class="dropdown">
@@ -74,9 +72,8 @@
           <?php
               }
             ?>
-           <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
             <?php if ($_SESSION['login']){
-
             ?>
             <li><a href="listagem.php">Lista de Usuarios</a></li>
             <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
@@ -86,26 +83,37 @@
             ?>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../faq.php">FAQ</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-    <center>
-    <div class="jumbotron" style="margin: 30px; padding: 30px; width: 80%;" >
-    <h1 align="center">Doações</h1><br>
-    <p align="justify">&ensp; Nós do Grupo Heróis Solidarios precisamos da sua ajuda, não somente para manter nosso trabalho mas também para ajudar as pesoas que necessitam.
-    Buscamos da maneira mas solidária possível ajudar não somente nossos irmãos que estão em hospitais, mais também pessoas que moram nas ruas e não
-    tem lugar para ficar e alimento para sobreviver. Toda vida tem seu valor e a maioria dessas pessoas ás vezes só querem uma chance, então ajude nos
-    a dar essa chance a elas doando quanto você puder. Toda ajuda é bem vinda. Por favor, não
-    deixe de ajudar, somos inteiramente gratos e que Deus vos abençoe.</p>
-    <p><a class="btn btn-primary btn-lg" href="../doacoes/formulariodinheiro.php" role="button">Clique para doar</a></p>
-      </div>
-      </center>
+<center>
+<form action="dinheiro.php" method="POST" class="form-group" style="width: 80%">
+<fieldset style="border: groove 2px; padding: 0.75em; margin: 2px; display: block">
+<div class="panel panel-info">
+  <div class="panel-heading" align="center">Doe quanto quiser preenchendo o formulário</div>
 
 
-      <footer = class=" container-fluid" style="background-color: #458B74; color: #fff; position: relative; bottom:0px; width:100%;">
+  </div>
+</div>
+  <div class="form-group">
+    <label for="exampleInputName2">Digite a Quantia</label>
+    <input type="text" name="quantia" class="form-control" id="exampleInputName2" placeholder="2.000,00"
+     >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Descrição da doação</label>
+    <textarea class="form-control" name="descricao" rows="3" minlength="4" maxlength="100"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+  </fieldset>
+</form>
+</center>
+<br>
+
+<footer = class=" container-fluid" style="background-color: #458B74; color: #fff; position: fixed; bottom:0px; width:100%;">
       <center>
       <span><a href="https://www.facebook.com/Herois-Solid%C3%A1rios-154532011421669/" ><img src="../images/fac.png" width="35px" style=" position: relative;  right: 0px" alt="Responsive image"></a></span>
       <span><a href="https://www.instagram.com/?hl=pt-br" ><img src="../images/ins.png" width="35px" style=" position: relative;  right: 0px" alt="Responsive image"></a></span>

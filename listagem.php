@@ -1,3 +1,13 @@
+<?php
+  session_start();
+  $_SESSION['login'];
+  if (!$_SESSION ['login']){
+    header('location: index.php');
+    die();
+  }
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -5,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Login</title>
+    <title>Lista de Usuarios</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -16,13 +26,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
   </head>
+<body>
 
-
-  <body>
-
-      <!-- Barra de Navegação -->
+     <!-- Barra de Navegação -->
        <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,25 +61,20 @@
               }
             ?>
             <li><a href="contatos.php">Contate-Nos</a></li>
-           <?php if ($_SESSION['login']){
-
-            ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doar<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="../doacoes/doarbs.php">Doe Dinheiro</a></li>
-                <li><a href="../doacoes/doaralgo.php">Doe Algo</a></li>
+                <li><a href="doacoes/doarbs.php">Doe Dinheiro</a></li>
+                <li><a href="doacoes/doaralgo.php">Doe Algo</a></li>
               </ul>
             </li>
           </ul>
-          <?php
-              }
-            ?>
 
           <ul class="nav navbar-nav navbar-right">
             <?php if ($_SESSION['login']){
 
             ?>
+            <li><a href="listagem.php">Lista de Usuarios</a></li>
             <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
             <li><a href="logout.php">Deslogar</a></li>
             <?php
@@ -84,41 +86,53 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+        <center>
+        <h1> Usuarios</h1>
+        <br>
+        <table border = "1" class="table-responsive" style="border: groove 2px; padding: 0.75em; margin: 2px;">
+            <tr>
+                <th>Nome do usuário</th>
+                <th>Nome completo</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Email</th>
+                <th>Opções</th>
+            </tr>
 
+            <?php
+                $query = "select * from USUARIO";
+                require ('conexao.php');
+                $resultado = mysqli_query($conexao,$query);
+                while($row = mysqli_fetch_array($resultado)){
+            ?>
 
+            <tr>
+                <td> <?= $row["LOGIN_USUARIO"]?> </td>
+                <td> <?= $row["NOMECOMPLETO"]?> </td>
+                <td> <?= $row["CPF"]?> </td>
+                <td> <?= $row["ENDERECO"]?> </td>
+                <td> <?= $row["EMAIL"]?> </td>
+                <td align="center">
+        <form action="#" method="POST">
+          <input type="hidden" name="id" value="<?= $row["CODIGO"]?>">
+          <input type="submit" name="" value="Deletar">
+        </form>
+        <form action="#" method="POST">
+          <input type="hidden" name="id" value="<?= $row["CODIGO"]?>">
+          <input type="submit" name="" value="Alterar">
+        </form>
+       </td>
+            </tr>
 
-      <div class="container-fluid">
-	<div class="centro" align="center">
-	<h1 align="center">Login</h1>
+            <?php
+                }
+            ?>
+        </table>
+    </table>
+</div>
+</center>
 
-	<form class="form-group" method="POST" action="logon.php">
-  <div class="form-group">
-    <label for="exampleInputName2">Login</label>
-    <input type="text" class="form-control" name="usuario" id="exampleInputName2" placeholder="JaneDone" required minlength="6" maxlength="32" pattern="[a-zA-Z0-9]+">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Senha</label>
-    <input type="password" class="form-control" name="senha" id="txtSenha"
-    placeholder="**********" name="passwd2"  minlength="8" maxlength="32"
-    required x-moz-errormessage=”Você esqueceu de preencher este campo.”>
-  </div>
-
-  <button type="submit" class="btn btn-primary center-block ">Entrar</button>
-  </form>
-				<br>
-				<p><a href="#">Esqueci minha senha</a></p>
-
-				<P>Não possui cadastro? click em:      <a href="cadastro.html">Cadastre-se agora</a></p>
-
-
-
-			</fieldset>
-
-
-	</div>
-      </div>
-
-     <footer = class=" container-fluid" style="background-color: #458B74; color: #fff; position: absolute; bottom:0; width:100%;">
+     <footer = class=" container-fluid" style="background-color: #458B74; color: #fff; position: fixed; bottom:0px; width:100%;">
       <center>
       <span><a href="https://www.facebook.com/Herois-Solid%C3%A1rios-154532011421669/" ><img src="images/fac.png" width="35px" style=" position: relative;  right: 0px" alt="Responsive image"></a></span>
       <span><a href="https://www.instagram.com/?hl=pt-br" ><img src="images/ins.png" width="35px" style=" position: relative;  right: 0px" alt="Responsive image"></a></span>

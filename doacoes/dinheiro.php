@@ -6,5 +6,6 @@ $sql = "INSERT INTO DOACAO_DIN (QUANTIA, DESCRICAO) VALUES ";
 $sql .= "('$valor', '$desc')";
 mysqli_query($strcon,$sql) or die("Erro ao tentar cadastrar registro");
 mysqli_close($strcon);
-echo "Cliente cadastrado com sucesso!";
+echo "Cliente cadastrado com sucesso!<br>";
+echo "<a href = \"formulariodinheiro.php\">Voltar para o formulário</a>";
 ?>

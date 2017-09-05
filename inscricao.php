@@ -9,7 +9,7 @@ $endereco = $_POST['endereco'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$conexao = mysqli_connect('localhost', 'root', 'Eus@uacad','HEROIS_SOLIDARIOS');
+require('conexao.php');
 $query = "insert into USUARIO (LOGIN_USUARIO, NOMECOMPLETO, CPF, ENDERECO, EMAIL, SENHA_USUARIO)
 values ('$nomeusu','$nomecom','$cpf','$endereco','$email','$senha');";
 
@@ -17,7 +17,7 @@ values ('$nomeusu','$nomecom','$cpf','$endereco','$email','$senha');";
 
     if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
         echo  "<script>alert('Cadastro concluído com sucesso! <br> Tente se logar no sistema!);</script>";
-		header("Location: login.php");
+        header("Location: login.php");
 
     } else {
         echo  "<script>alert('Cadastro não realizado, tente novamente!);</script>";

@@ -24,10 +24,10 @@
 
     session_start();
     $usuario = $_SESSION['login'];
-     
-    
+
+
   ?>
-  
+
   <body>
 
       <!-- Barra de Navegação -->
@@ -53,7 +53,7 @@
             session_start();
             $usuario = $_SESSION['login'];
             if (!isset($_SESSION['login'])){
-              
+
             ?>
 
             <li><a href="login.php">Login</a></li>
@@ -62,26 +62,32 @@
               }
             ?>
             <li><a href="contatos.php">Contate-Nos</a></li>
+           <?php if ($_SESSION['login']){
+
+            ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doar<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="doacoes/doarbs.php">Doe Dinheiro</a></li>
-                <li><a href="doacoes/doetempobs.php">Doe Tempo</a></li>
-                <li><a href="doacoes/doaralgo.php">Doe Algo</a></li>
+                <li><a href="../doacoes/doarbs.php">Doe Dinheiro</a></li>
+                <li><a href="../doacoes/doaralgo.php">Doe Algo</a></li>
               </ul>
             </li>
           </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <?php if ($_SESSION['login']){ 
-              
-            ?>
-            <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
-            <li><a href="logout.php">Deslogar</a></li>
-            <?php  
+          <?php
               }
             ?>
-            
+
+          <ul class="nav navbar-nav navbar-right">
+            <?php if ($_SESSION['login']){
+
+            ?>
+            <li><a href="listagem.php">Lista de Usuarios</a></li>
+            <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
+            <li><a href="logout.php">Deslogar</a></li>
+            <?php
+              }
+            ?>
+
             <li><a href="faq.php">FAQ</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->

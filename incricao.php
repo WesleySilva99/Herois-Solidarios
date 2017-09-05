@@ -9,7 +9,7 @@ $endereco = $_POST['endereco'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$conexao = mysqli_connect('10.31.30.92', 'root', '@luno1fpe','HEROIS_SOLIDARIOS');
+require('conexao.php');
 $query = "insert into USUARIO (LOGIN_USUARIO, NOMECOMPLETO, CPF, ENDERECO, EMAIL, SENHA_USUARIO)
 values ('$nomeusu','$nomecom','$cpf','$endereco','$email','$senha');";
 
