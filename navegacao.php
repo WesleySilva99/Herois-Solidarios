@@ -1,4 +1,8 @@
- <nav class="navbar navbar-default">
+<?php
+session_start();
+require 'conexao.php';
+?>
+        <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -17,10 +21,10 @@
             <li><a href="galeria.php">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
             <li><a href="Visitas.php">Visitas</a></li>
             <?php
-            session_start();
+            
             $usuario = $_SESSION['login'];
             if (!isset($_SESSION['login'])){
-              
+
             ?>
 
             <li><a href="login.php">Login</a></li>
@@ -33,22 +37,29 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doar<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="doacoes/doarbs.php">Doe Dinheiro</a></li>
-                <li><a href="doacoes/doetempobs.php">Doe Tempo</a></li>
                 <li><a href="doacoes/doaralgo.php">Doe Algo</a></li>
               </ul>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <?php if ($_SESSION['login']){ 
-              
+            <?php if ($_SESSION['login']){
+
             ?>
-            <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
-            <li><a href="logout.php">Deslogar</a></li>
-            <?php  
+              <?php
+                if ($row["ADMINISTRADOR"] == 1) {
+                  
+                ?>
+                <li><a href="listagem.php">Lista de Usuarios</a></li>
+              <?php
+                }
+              ?>
+                <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
+                <li><a href="logout.php">Deslogar</a></li>
+            <?php
               }
             ?>
-            
+
             <li><a href="faq.php">FAQ</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->

@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<body>
+session_start();
+
+require '../conexao.php';
+
+?>
 
 
 <nav class="navbar navbar-default">
@@ -45,17 +48,25 @@
             </li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right">
+           <ul class="nav navbar-nav navbar-right">
+            <?php if ($_SESSION['login']){
 
-             <?php if ($_SESSION['login']){ 
-              
             ?>
-            <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
-            <li><a href="logout.php">Deslogar</a></li>
-            <?php  
+              <?php
+                if ($row["ADMINISTRADOR"] == 1) {
+                  
+                ?>
+                <li><a href="../listagem.php">Lista de Usuarios</a></li>
+              <?php
+                }
+              ?>
+                <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
+                <li><a href="../logout.php">Deslogar</a></li>
+            <?php
               }
             ?>
-            <li><a href="../faq.php">FAQ</a></li>
+
+            <li><a href="faq.php">FAQ</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
