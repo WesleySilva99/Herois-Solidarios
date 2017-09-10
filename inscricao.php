@@ -10,8 +10,8 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 
 require('conexao.php');
-$query = "insert into USUARIO (LOGIN_USUARIO, NOMECOMPLETO, CPF, ENDERECO, EMAIL, SENHA_USUARIO)
-values ('$nomeusu','$nomecom','$cpf','$endereco','$email','$senha');";
+$query = "insert into USUARIO (ADMINISTRADOR, LOGIN_USUARIO, NOMECOMPLETO, CPF, ENDERECO, EMAIL, SENHA_USUARIO)
+values (0, '$nomeusu','$nomecom','$cpf','$endereco','$email','$senha');";
 
   $result = mysqli_query($conexao, $query); //Realiza a consulta
 

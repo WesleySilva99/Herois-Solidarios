@@ -54,7 +54,8 @@
               }
             ?>
             <li><a href="contatos.php">Contate-Nos</a></li>
-           <?php if ($_SESSION['login']){
+           <?php 
+           if ($_SESSION['login']){
 
             ?>
             <li class="dropdown">
@@ -70,7 +71,8 @@
             ?>
 
           <ul class="nav navbar-nav navbar-right">
-            <?php if ($_SESSION['login']){
+            <?php if 
+            ($_SESSION['login']){
 
             ?>
             <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
@@ -108,7 +110,7 @@
 				<br>
 				<p><a href="#">Esqueci minha senha</a></p>
 
-				<P>Não possui cadastro? click em:      <a href="cadastro.html">Cadastre-se agora</a></p>
+				<P>Não possui cadastro? click em:      <a href="cadastro.php">Cadastre-se agora</a></p>
 
 
 

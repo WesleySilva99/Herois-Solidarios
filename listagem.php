@@ -74,9 +74,13 @@
             <?php if ($_SESSION['login']){
 
             ?>
-            <li><a href="listagem.php">Lista de Usuarios</a></li>
-            <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
-            <li><a href="logout.php">Deslogar</a></li>
+            	<?php
+            		if (condition) {
+            			# code...
+            		}
+       		     	<li><a href="listagem.php">Lista de Usuarios</a></li>
+	        	    <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
+    	        	<li><a href="logout.php">Deslogar</a></li>
             <?php
               }
             ?>
@@ -91,6 +95,7 @@
         <br>
         <table border = "1" class="table-responsive" style="border: groove 2px; padding: 0.75em; margin: 2px;">
             <tr>
+            	<th>Administrador</th>
                 <th>Nome do usuário</th>
                 <th>Nome completo</th>
                 <th>CPF</th>
@@ -107,6 +112,17 @@
             ?>
 
             <tr>
+            	<td><?php if ($row["ADMINISTRADOR"] == 1) {
+            		?>
+            		Sim
+            	<?php
+            }else{
+            	?>
+            	Não
+
+            	<?php
+            }
+            	?></td>
                 <td> <?= $row["LOGIN_USUARIO"]?> </td>
                 <td> <?= $row["NOMECOMPLETO"]?> </td>
                 <td> <?= $row["CPF"]?> </td>
