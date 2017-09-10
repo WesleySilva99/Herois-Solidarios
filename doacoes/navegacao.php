@@ -26,8 +26,9 @@ require '../conexao.php';
             <li><a href="../galeria.php">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
             <li><a href="../Visitas.php">Visitas</a></li>
              <?php
-            session_start();
+            
             $usuario = $_SESSION['login'];
+     
             if (!isset($_SESSION['login'])){
               
             ?>
@@ -53,7 +54,7 @@ require '../conexao.php';
 
             ?>
               <?php
-                if ($row["ADMINISTRADOR"] == 1) {
+                if (isset($_SESSION["administrador"])) {
                   
                 ?>
                 <li><a href="../listagem.php">Lista de Usuarios</a></li>

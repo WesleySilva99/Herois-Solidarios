@@ -47,7 +47,7 @@ require 'conexao.php';
 
             ?>
               <?php
-                if ($row["ADMINISTRADOR"] == 1) {
+                if (isset($_SESSION["administrador"])) {
                   
                 ?>
                 <li><a href="listagem.php">Lista de Usuarios</a></li>

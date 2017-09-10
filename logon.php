@@ -13,9 +13,12 @@
 		$array = mysqli_fetch_array($resultado);
 		$_SESSION['id']= $array["CODIGO"];
 		$_SESSION['login'] = $usuario;
+		if ($array["ADMINISTRADOR"] == 1) {
+			$_SESSION['administrador'] = true;
+		}
 
 		echo $_SESSION['id'];
-		echo "Login feito com sucesso!";
+		echo "<script> alert('Login feito com sucesso!'; </script>";
 		header('location: index.php');
 
 	}else{
