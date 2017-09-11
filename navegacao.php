@@ -21,7 +21,7 @@ require 'conexao.php';
             <li><a href="galeria.php">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
             <li><a href="Visitas.php">Visitas</a></li>
             <?php
-            
+
             $usuario = $_SESSION['login'];
             if (!isset($_SESSION['login'])){
 
@@ -48,7 +48,7 @@ require 'conexao.php';
             ?>
               <?php
                 if (isset($_SESSION["administrador"])) {
-                  
+
                 ?>
                 <li><a href="listagem.php">Lista de Usuarios</a></li>
               <?php

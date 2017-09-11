@@ -26,11 +26,11 @@ require '../conexao.php';
             <li><a href="../galeria.php">Galeria de Fotos <span class="sr-only">(current)</span></a></li>
             <li><a href="../Visitas.php">Visitas</a></li>
              <?php
-            
+
             $usuario = $_SESSION['login'];
-     
+
             if (!isset($_SESSION['login'])){
-              
+
             ?>
 
             <li><a href="login.php">Login</a></li>
@@ -43,7 +43,6 @@ require '../conexao.php';
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Doar<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="doarbs.php">Doe Dinheiro</a></li>
-                <li><a href="doetempobs.php">Doe Tempo</a></li>
                 <li><a href="doaralgo.php">Doe Algo</a></li>
               </ul>
             </li>
@@ -55,7 +54,7 @@ require '../conexao.php';
             ?>
               <?php
                 if (isset($_SESSION["administrador"])) {
-                  
+
                 ?>
                 <li><a href="../listagem.php">Lista de Usuarios</a></li>
               <?php

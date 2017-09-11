@@ -1,7 +1,11 @@
 <?php
-session_start();
-require 'conexao.php';
-?>
+  session_start();
+  $_SESSION['login'];
+  if (!isset($_SESSION["administrador"])){
+    header('location: ../index.php');
+    die();
+  }
+ ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,7 +14,7 @@ require 'conexao.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Visitas</title>
+    <title>Participantes</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -24,7 +28,8 @@ require 'conexao.php';
   </head>
 <body>
 
-	 <?php
+     <!-- Barra de Navegação -->
+        <?php
 
     require 'navegacao.php';
 
@@ -34,30 +39,24 @@ require 'conexao.php';
 
 <center>
 <div class="table-responsive">
-<h1>Visitas</h1><br><br>
+<h1>Usuários Participantes da Visita</h1><br><br>
 <table border = "1" class="table" style="border: groove 2px; padding: 0.75em; margin: 2px;">
 <tr>
- <th class="text-center">Data das Visitas</th><th class="text-center">Local</th><th class="text-center">Endereço</th><th class="text-center">Horários</th>
-<?php if ($_SESSION['login']){
+ <th class="text-center">Codigo do Usuario</th><th class="text-center">Nome</th><th class="text-center">E-mail</th>
 
-            ?>
- <th class="text-center">Doação de Tempo</th>
- <?php
-              }
-            ?>
-            <?php if (isset($_SESSION["administrador"])){
-
-            ?>
- <th class="text-center">Participantes da Visita</th>
- <?php
-              }
-            ?>
 </tr>
 
 <?php
   require('conexao.php');
 
-  $query = 'select * from VISITAS order by DATA_VIS asc';
+  $codigo = $_POST['id'];
+  $visita = "select COD_VISITA from TEMP_USU, VISITAS where COD_VISITA = CODIGO and CODIGO = '$codigo' ";
+  $resul = mysqli_query($conexao, $visita);
+  $array = mysqli_fetch_array($resul);
+  $id = $array['COD_VISITA'];
+
+
+  $query = "select CODIGO, NOMECOMPLETO, EMAIL from USUARIO, TEMP_USU where CODIGO = COD_USUARIO and COD_VISITA = '$id' ";
   $resultado = mysqli_query($conexao, $query);
   while ($registro = mysqli_fetch_array($resultado)){
 
@@ -65,35 +64,9 @@ require 'conexao.php';
 
 
 <tr>
-       <td> <?= $data = $registro["DATA_VIS"] ?></td>
-       <td> <?= $registro["LOCAL"] ?></td>
-       <td> <?= $registro["ENDERECO"] ?></td>
-       <td> <?= $registro["HORARIO_VISITA"] ?></td>
-      <?php if ($_SESSION['login']){
-
-            ?>
-       <td align="center">
-        <form action="adctempo.php" method="POST">
-          <input type="hidden" name="id" value="<?= $registro["CODIGO"]?>">
-          <input type="submit" name="" value="Doar">
-        </form>
-       </td>
-       <?php
-              }
-            ?>
-
-            <?php
-               if (isset($_SESSION["administrador"])){
-            ?>
-        <td align="center">
-        <form action="participantes.php" method="POST">
-          <input type="hidden" name="id" value="<?= $registro["CODIGO"]?>">
-          <input type="submit" name="" value="Participantes">
-        </form>
-       </td>
-       <?php
-          }
-       ?>
+       <td> <?= $data = $registro["CODIGO"] ?></td>
+       <td> <?= $registro["NOMECOMPLETO"] ?></td>
+       <td> <?= $registro["EMAIL"] ?></td>
 
 </tr>
 

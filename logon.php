@@ -6,7 +6,7 @@
 	$senha = $_POST["senha"];
 
 	require('conexao.php');
-	$query = "SELECT CODIGO, LOGIN_USUARIO, SENHA_USUARIO FROM USUARIO WHERE LOGIN_USUARIO = '$usuario' and SENHA_USUARIO = '$senha'";
+	$query = "SELECT CODIGO, LOGIN_USUARIO, SENHA_USUARIO,ADMINISTRADOR FROM USUARIO WHERE LOGIN_USUARIO = '$usuario' and SENHA_USUARIO = '$senha'";
 
 	$resultado = mysqli_query($conexao, $query);
 	if($resultado) {

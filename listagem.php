@@ -1,8 +1,8 @@
 <?php
   session_start();
   $_SESSION['login'];
-  if (!$_SESSION ['login']){
-    header('location: index.php');
+  if (!isset($_SESSION["administrador"])){
+    header('location: ../index.php');
     die();
   }
  ?>
@@ -77,7 +77,7 @@ require 'navegacao.php';
           <input type="hidden" name="id" value="<?= $row["CODIGO"]?>">
           <input type="submit" name="" value="Deletar">
         </form>
-        <form action="#" method="POST">
+        <form action="AlterarDados.php" method="POST">
           <input type="hidden" name="id" value="<?= $row["CODIGO"]?>">
           <input type="submit" name="" value="Alterar">
         </form>

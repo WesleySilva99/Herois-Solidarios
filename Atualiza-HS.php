@@ -1,6 +1,5 @@
 <?php
-require'banco.php';
-require('conexao.php');
+require'conexao.php';
 session_start();
 
 if (!isset($_SESSION['login'])){
@@ -9,10 +8,25 @@ if (!isset($_SESSION['login'])){
 
 
 
-$cod_usuario = $_POST['atualizar'];
+$CODIGO = $_POST['id'];
+$login = $_POST['login'];
+$senha = $_POST['senha'];
+$email = $_POST['email'];
+$endereco = $_POST['endereco'];
+$nome = $_POST['nome'];
 
-$update = atualiza($cod_usuario);
-if ($update) {
+echo $CODIGO;
+echo $login;
+echo $senha;
+echo $email;
+echo $endereco;
+echo $nome;
+
+
+$sql = "UPDATE USUARIO SET SENHA_USUARIO = '$senha', NOMECOMPLETO = '$nome', EMAIL = '$email', ENDERECO = '$endereco', LOGIN_USUARIO = '$login' WHERE CODIGO = $CODIGO; ";
+	$query = mysqli_query($conexao, $sql);
+
+if ($query) { 
 	echo "<script> alert('Contato alterado com sucesso!'); </script>";
 	header("Location: listagem.php");
 
