@@ -54,7 +54,7 @@ require 'conexao.php';
               <?php
                 }
               ?>
-                <li><a href="#"><?php echo "Usuario $usuario"; ?></a></li>
+                <li><a href="AlterarDadosUsu.php"><?php echo "Usuario $usuario"; ?></a></li>
                 <li><a href="logout.php">Deslogar</a></li>
             <?php
               }
